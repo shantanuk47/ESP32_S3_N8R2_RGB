@@ -3,8 +3,8 @@ Project : ESP32-S3 N8R2 RGB (HW-678 Board)
 Author  : Shantanu Kumar
 GitHub  : https://github.com/shantanuk47
 
-Date :
-File : main.c
+Date    : 01-03-2026
+File    : main.c
 Purpose : Phase 2 – WS2812 GPIO Validation
 ============================================================*/
 

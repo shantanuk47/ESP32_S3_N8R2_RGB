@@ -3,8 +3,8 @@ Project : ESP32-S3 N8R2 RGB (HW-678 Board)
 Author  : Shantanu Kumar
 GitHub  : https://github.com/shantanuk47
 
-Date :
-File : config.h
+Date    : 01-03-2026
+File    : config.h
 Purpose : Hardware configuration abstraction layer
 ============================================================*/
 

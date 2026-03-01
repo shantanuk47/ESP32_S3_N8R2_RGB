@@ -3,8 +3,8 @@ Project : ESP32-S3 N8R2 RGB (HW-678 Board)
 Author  : Shantanu Kumar
 GitHub  : https://github.com/shantanuk47
 
-Date :
-File : ws2812.c
+Date    : 01-03-2026
+File    : ws2812.c
 Purpose : WS2812 Driver using RMT (ESP-IDF 5.x compliant)
 ============================================================*/
 
