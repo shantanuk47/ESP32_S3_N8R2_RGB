@@ -30,7 +30,5 @@ void system_init(void)
     ESP_LOGI(TAG, "================================");
     ESP_LOGI(TAG, "System Initializing...");
 
-    rgb_init();
-
     ESP_LOGI(TAG, "System Initialization Complete");
 }

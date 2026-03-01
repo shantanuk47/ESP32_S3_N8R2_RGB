@@ -127,24 +127,31 @@ RGB control fully abstracted and system initialization centralized.
 
 ---
 
-## Phase 4 — RGB Driver Abstraction
+## Phase 4 — LED Engine Architecture
 
-Version: v0.5.0  
-Status: Pending  
+Version: In Progress  
+Status: Active  
 
 ### Objectives
-- Implement rgb_init()
-- Implement rgb_set_color()
-- Remove hardware details from main.c
-- All GPIO values isolated in config layer
+- Introduce LED engine task (FreeRTOS-based)
+- Move LED ownership from main.c to engine layer
+- Implement pattern abstraction (color cycle)
+- Ensure non-blocking RTOS-safe architecture
+- Stabilize system lifecycle (prevent app_main return)
+
+### Completed
+- LED engine task introduced
+- RGB abstraction integrated
+- system_init layer introduced
+- app_main converted to orchestration-only
+- RTOS lifecycle bug fixed (app_main no longer returns)
+- Clean task-based LED ownership established
 
 ### Validation Criteria
-- No direct GPIO calls in application layer
-- Driver fully modular
-- Clean API boundary
-
-Exit Condition:
-Driver abstraction validated.
+- No reboot loop
+- No duplicate WS2812 initialization
+- Engine task runs independently
+- LED behavior controlled only by engine
 
 ---
 

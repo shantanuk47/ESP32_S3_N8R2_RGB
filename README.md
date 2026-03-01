@@ -24,8 +24,12 @@ The goal is not just LED control — but professional firmware engineering pract
 
 # 2. Current Status
 
-**Firmware Version:** v0.4.0 – RGB Abstraction & System Initialization Completed ✅  
-**Current Phase:** Phase 3 – Architecture Stabilization  
+**Firmware Version:** v0.4.0 (Development)  
+**Current Phase:** Phase 4 – LED Engine Architecture  
+
+Phase 4 introduces a dedicated LED engine task,
+separating LED behavior from application logic
+and stabilizing RTOS lifecycle handlin
 
 See [`docs/firmware_roadmap.md`](docs/firmware_roadmap.md) for detailed roadmap.
 
@@ -114,6 +118,17 @@ Key Design Rule:
 Application logic MUST NOT directly access hardware drivers.
 
 All hardware interaction must flow through abstraction layers.
+
+### Runtime Flow
+
+main.c
+ └── system_init()
+ └── led_engine_init()
+     └── rgb_init()
+         └── ws2812_init()
+
+LED control is fully owned by led_engine.
+Application layer does not directly control hardware.
 
 ---
 
