@@ -1,7 +1,6 @@
 # ESP32-S3 N8R2 RGB (HW-678)
 
-Professional embedded firmware project for controlling the onboard 4-pin RGB LED 
-on ESP32-S3 N8R2 (HW-678 board) using ESP-IDF and PlatformIO.
+Professional embedded firmware project for controlling the onboard WS2812 addressable RGB LED
 
 This repository follows strict embedded architecture, modular design, 
 Git-controlled firmware versioning, and disciplined coding standards.
@@ -25,8 +24,8 @@ The goal is not just LED control — but professional firmware engineering pract
 
 # 2. Current Status
 
-**Firmware Version:** v0.2.0 – Boot Validation Completed ✅  
-**Current Phase:** Phase 2 – GPIO Validation  
+**Latest Stable Firmware:** v0.3.0 – WS2812 GPIO Validation Completed ✅  
+**Current Phase:** Phase 3 – PWM / Brightness Control  
 
 See [`docs/firmware_roadmap.md`](docs/firmware_roadmap.md) for detailed roadmap.
 
@@ -34,12 +33,14 @@ See [`docs/firmware_roadmap.md`](docs/firmware_roadmap.md) for detailed roadmap.
 
 # 3. Hardware Information
 
-Board        : ESP32-S3 N8R2 (HW-678)  
-Flash        : 8MB  
-PSRAM        : 2MB  
-RGB LED      : Onboard 4-pin RGB (non-addressable)  
-MCU          : ESP32-S3  
-USB          : Native USB  
+Board        : ESP32-S3 N8R2 (HW-678)
+Flash        : 8MB
+PSRAM        : 2MB
+MCU          : ESP32-S3
+USB          : Native USB
+RGB LED      : WS2812 (Addressable RGB)
+Data GPIO    : GPIO 48
+Protocol     : 800kHz single-wire (RMT peripheral)
 
 ---
 
@@ -89,11 +90,11 @@ This guarantees:
 
 This firmware follows layered embedded design:
 
-- src/        → Application & driver implementation
-- include/    → Public header files
-- lib/        → Custom reusable components
+- src/        → Application layer (main logic)
+- include/    → Public headers
+- lib/        → Reusable drivers (e.g., ws2812)
 - test/       → Unit testing
-- config.c/h  → Hardware configuration abstraction layer
+- config.h    → Hardware configuration abstraction layer
 
 Key Design Rule:
 
@@ -111,7 +112,6 @@ ESP32_S3_N8R2_RGB/
 ├── src/
 │   ├── main.c
 │   ├── rgb.c
-│   ├── config.c
 │
 ├── include/
 │   ├── rgb.h
@@ -119,6 +119,9 @@ ESP32_S3_N8R2_RGB/
 │   ├── version.h (auto-generated)
 │
 ├── lib/
+│   └── ws2812/
+│       ├── ws2812.c
+│       └── ws2812.h
 ├── test/
 ├── docs/
 │   └── firmware_roadmap.md
@@ -236,7 +239,8 @@ Embedded firmware must be predictable, testable, and maintainable.
 # 12. Roadmap
 
 Phase 1 – Boot Validation completed ✅  
-Current Phase: Phase 2 – GPIO Validation  
+Phase 2 – WS2812 GPIO Validation completed ✅  
+Phase 3 - PWM / Brightness Control Validation completed ✅
 
 Detailed roadmap available in:
 

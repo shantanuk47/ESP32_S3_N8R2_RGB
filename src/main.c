@@ -16,12 +16,13 @@ Includes
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "ws2812.h"
+#include "config.h"
+
 
 /*============================================================
 Defines
 =============================================================*/
 #define TAG "BOOT"
-#define LED_GPIO 38
 
 /*============================================================
 Static Variables
@@ -47,9 +48,9 @@ void app_main(void)
     ESP_LOGI(TAG, "================================");
     ESP_LOGI(TAG, "System Ready");
 
-    ESP_LOGI(TAG, "Initializing WS2812 on GPIO %d", LED_GPIO);
+    ESP_LOGI(TAG, "Initializing WS2812 on GPIO %d", WS2812_DATA_GPIO);
 
-    ws2812_init(LED_GPIO);
+    ws2812_init(WS2812_DATA_GPIO);
 
     while (1)
     {
@@ -66,7 +67,7 @@ void app_main(void)
         vTaskDelay(pdMS_TO_TICKS(1000));
 
         ESP_LOGI(TAG, "OFF");
-        ws2812_off();
+        ws2812_set_color(0, 0, 0);
         vTaskDelay(pdMS_TO_TICKS(1000));
     }
 }

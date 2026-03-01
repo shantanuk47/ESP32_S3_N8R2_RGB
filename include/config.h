@@ -4,22 +4,24 @@ Author  : Shantanu Kumar
 GitHub  : https://github.com/shantanuk47
 
 Date :
-File : ws2812.h
-Purpose : WS2812 driver public interface (RMT based)
+File : config.h
+Purpose : Hardware configuration abstraction layer
 ============================================================*/
 
-#ifndef WS2812_H
-#define WS2812_H
+#ifndef CONFIG_H
+#define CONFIG_H
 
-/*============================================================
-Includes
-=============================================================*/
 #include "driver/gpio.h"
-#include <stdint.h>
 
 /*============================================================
-Public API
+Board Identification
 =============================================================*/
-void ws2812_init(gpio_num_t gpio);
-void ws2812_set_color(uint8_t r, uint8_t g, uint8_t b);
+#define BOARD_NAME          "ESP32-S3 N8R2 (HW-678)"
+
+/*============================================================
+WS2812 Configuration
+=============================================================*/
+#define WS2812_DATA_GPIO    GPIO_NUM_48
+#define WS2812_LED_COUNT    1
+
 #endif

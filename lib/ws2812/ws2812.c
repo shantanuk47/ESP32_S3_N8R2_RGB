@@ -15,6 +15,7 @@ Includes
 #include "driver/rmt_tx.h"
 #include "esp_log.h"
 #include <string.h>
+#include "freertos/FreeRTOS.h"
 
 /*============================================================
 Defines
