@@ -27,6 +27,7 @@ Defines
 Static Variables
 ============================================================*/
 static led_pattern_t current_pattern = LED_PATTERN_OFF;
+static int8_t        bright          = 0;
 
 /*============================================================
 Private Functions
@@ -55,14 +56,22 @@ static void handle_static_patterns(void)
 
 static void handle_color_cycle(void)
 {
-    rgb_set_color(0, 0, 0);
+    rgb_set_brightness(bright);
+    rgb_set_color(255, 0, 0);
     vTaskDelay(pdMS_TO_TICKS(ENGINE_DELAY_MS));
 
-    rgb_set_color(0, 0, 0);
+    rgb_set_brightness(bright);
+    rgb_set_color(0, 255, 0);
     vTaskDelay(pdMS_TO_TICKS(ENGINE_DELAY_MS));
 
-    rgb_set_color(0, 0, 0);
+    rgb_set_brightness(bright);
+    rgb_set_color(0, 0, 255);
     vTaskDelay(pdMS_TO_TICKS(ENGINE_DELAY_MS));
+
+    rgb_off();
+    vTaskDelay(pdMS_TO_TICKS(ENGINE_DELAY_MS));
+    
+    bright = bright + 10;
 }
 
 static void led_engine_task(void *pvParameters)
