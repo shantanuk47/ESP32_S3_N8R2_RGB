@@ -93,24 +93,37 @@ WS2812 hardware mapping confirmed, documented, and abstracted via config layer.
 
 ---
 
-## Phase 3 — PWM Control
+## Phase 3 — RGB Abstraction & System Initialization
 
 Version: v0.4.0  
-Status: Pending  
+Status: Completed  
 
 ### Objectives
-- Initialize LEDC
-- Implement per-channel brightness
-- Static color mixing
+- Introduce RGB abstraction layer (`rgb.c/h`)
+- Remove direct WS2812 usage from `main.c`
+- Implement global brightness scaling
+- Preserve hardware configuration abstraction (`config.h`)
+- Introduce `system_init.c/h` for centralized boot initialization
+
+### Implementation Summary
+- `rgb.c` now manages:
+  - Internal RGB state
+  - Brightness scaling (0–255)
+  - Encapsulated WS2812 driver calls
+- `system_init.c` handles:
+  - Firmware version logging
+  - Boot diagnostics
+  - Module initialization (RGB)
+- `main.c` is reduced to a clean firmware entry point
 
 ### Validation Criteria
-- Smooth brightness scaling
-- No flickering
-- PWM frequency stable
-- No blocking delays
+- RGB color cycling functional
+- Brightness scaling verified on hardware
+- No direct WS2812 calls from `main.c`
+- Clean compilation under `-Wall -Wextra -Werror`
 
 Exit Condition:
-Stable PWM-based color control.
+RGB control fully abstracted and system initialization centralized.
 
 ---
 

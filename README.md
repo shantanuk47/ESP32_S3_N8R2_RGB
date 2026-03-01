@@ -24,8 +24,8 @@ The goal is not just LED control — but professional firmware engineering pract
 
 # 2. Current Status
 
-**Latest Stable Firmware:** v0.3.0 – WS2812 GPIO Validation Completed ✅  
-**Current Phase:** Phase 3 – PWM / Brightness Control  
+**Firmware Version:** v0.4.0 – RGB Abstraction & System Initialization Completed ✅  
+**Current Phase:** Phase 3 – Architecture Stabilization  
 
 See [`docs/firmware_roadmap.md`](docs/firmware_roadmap.md) for detailed roadmap.
 
@@ -90,17 +90,30 @@ This guarantees:
 
 This firmware follows layered embedded design:
 
-- src/        → Application layer (main logic)
-- include/    → Public headers
-- lib/        → Reusable drivers (e.g., ws2812)
+- src/        → Application & module implementations
+- include/    → Public header interfaces
+- lib/        → Low-level reusable drivers (WS2812)
 - test/       → Unit testing
-- config.h    → Hardware configuration abstraction layer
+- config.h    → Hardware configuration abstraction
+- system_init → Centralized firmware initialization layer
+
+Layered flow:
+
+main.c  
+   ↓  
+system_init.c  
+   ↓  
+rgb.c  
+   ↓  
+ws2812.c  
+   ↓  
+ESP-IDF RMT driver  
 
 Key Design Rule:
 
-Application logic MUST NOT hardcode GPIO numbers.
+Application logic MUST NOT directly access hardware drivers.
 
-All hardware mappings must reside inside the configuration layer.
+All hardware interaction must flow through abstraction layers.
 
 ---
 
@@ -240,7 +253,9 @@ Embedded firmware must be predictable, testable, and maintainable.
 
 Phase 1 – Boot Validation completed ✅  
 Phase 2 – WS2812 GPIO Validation completed ✅  
-Phase 3 - PWM / Brightness Control Validation completed ✅
+Phase 3 – RGB Abstraction & System Initialization completed ✅  
+
+Next Phase: Phase 4 – LED Task & Pattern Engine
 
 Detailed roadmap available in:
 

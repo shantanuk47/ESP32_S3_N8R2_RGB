@@ -21,7 +21,7 @@ Board Identification
 /*============================================================
 WS2812 Configuration
 =============================================================*/
-#define WS2812_DATA_GPIO    GPIO_NUM_48
+#define CONFIG_LED_GPIO 48
 #define WS2812_LED_COUNT    1
 
 #endif
