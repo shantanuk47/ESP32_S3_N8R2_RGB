@@ -25,10 +25,10 @@ The goal is not just LED control — but professional firmware engineering pract
 
 # 2. Current Status
 
-Versioning: Git-driven (auto-generated at build time)  
-Current Phase: Architecture Baseline  
+**Firmware Version:** v0.2.0 – Boot Validation Completed ✅  
+**Current Phase:** Phase 2 – GPIO Validation  
 
-See `docs/firmware_roadmap.md` for detailed roadmap.
+See [`docs/firmware_roadmap.md`](docs/firmware_roadmap.md) for detailed roadmap.
 
 ---
 
@@ -234,6 +234,9 @@ Embedded firmware must be predictable, testable, and maintainable.
 ---
 
 # 12. Roadmap
+
+Phase 1 – Boot Validation completed ✅  
+Current Phase: Phase 2 – GPIO Validation  
 
 Detailed roadmap available in:
 

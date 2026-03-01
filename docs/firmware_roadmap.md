@@ -45,20 +45,21 @@ Tag v0.1.0 created.
 ## Phase 1 — Boot Validation
 
 Version: v0.2.0  
-Status: Pending  
+Status: Completed ✅
 
 ### Objectives
-- Minimal app_main()
-- Confirm board boots without reset loop
-- Serial logging verified
+- Minimal app_main()  
+- Confirm board boots without reset loop  
+- Serial logging verified  
 
 ### Validation Criteria
-- Stable boot for 60 seconds
-- No watchdog resets
-- Correct version string displayed
+- Stable boot for 60 seconds ✅  
+- No watchdog resets ✅  
+- Correct version string displayed ✅  
 
 Exit Condition:
-Hardware boot stability confirmed.
+Hardware boot stability confirmed.  
+**Tag v0.2.0 created.**
 
 ---
 
