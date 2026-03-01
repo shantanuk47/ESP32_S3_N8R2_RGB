@@ -63,23 +63,33 @@ Hardware boot stability confirmed.
 
 ---
 
-## Phase 2 — GPIO Validation
+## Phase 2 — WS2812 GPIO Validation
 
 Version: v0.3.0  
-Status: Pending  
+Status: Completed  
 
 ### Objectives
-- Identify RGB GPIO pins
-- Confirm LED type (Common Anode/Cathode)
-- Manual GPIO toggle test
+- Identify onboard RGB LED type
+- Determine correct data GPIO pin
+- Validate WS2812 protocol communication using RMT
+- Confirm stable color control
+
+### Hardware Findings
+- LED Type: WS2812 (addressable RGB)
+- Data GPIO: GPIO 48
+- Control Protocol: 800kHz (RMT peripheral)
+- Supply Voltage: 5V confirmed
+- No discrete RGB pins (single-wire data LED)
 
 ### Validation Criteria
-- Each color toggles independently
-- No unintended GPIO interference
-- Voltage verified if required
+- RED, GREEN, BLUE, OFF cycle verified
+- No watchdog resets
+- No RMT transmission errors
+- Stable runtime > 60 seconds
+- Clean config-based GPIO abstraction (no hardcoded pins in app layer)
 
 Exit Condition:
-RGB hardware mapping confirmed and documented.
+WS2812 hardware mapping confirmed, documented, and abstracted via config layer.
 
 ---
 
