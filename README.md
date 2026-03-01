@@ -125,11 +125,13 @@ ESP32_S3_N8R2_RGB/
 ├── src/
 │   ├── main.c
 │   ├── rgb.c
+│   ├── system_init.c
 │
 ├── include/
 │   ├── rgb.h
 │   ├── config.h
 │   ├── version.h (auto-generated)
+│   ├── system_init.h
 │
 ├── lib/
 │   └── ws2812/
